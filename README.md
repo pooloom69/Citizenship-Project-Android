@@ -1,4 +1,4 @@
-#🇺🇸 Citizenship Coach
+<h1>🇺🇸 Citizenship Coach</h1>
  
 Citizenship Coach is an AI-powered mobile application designed to help users practice for the U.S. Naturalization Civics Test.
 The project consists of two main components:
@@ -10,7 +10,8 @@ The project consists of two main components:
 This is the combined top-level README for the entire project.
 
 
-##Features
+
+<h2>Features</h2>
 Mobile App (citizenship-coach)
 
 Complete 2008 & 2025 USCIS Civics Test question sets
@@ -61,7 +62,8 @@ Random question generation
 Endpoints: /questions, /questions/random
 
 
-##Project Structure 
+<h2>Project Structure</h2>
+
 ```
 CITIZENSHIP-PROJECT/
 │
@@ -92,10 +94,9 @@ CITIZENSHIP-PROJECT/
 │   └── README.md
 │
 └── README.md                 # Top-level combined README
-
 ```
 
-##🚀 Getting Started
+<h2>🚀 Getting Started</h2>
 
 1) Backend Setup (FastAPI)
 1. Create virtual environment
@@ -132,10 +133,13 @@ npm install
 3. Configure backend API URL
 
 Inside app/api/client.js:
+
 ```
 export const API_URL = "http://127.0.0.1:8000";  // or deployed backend URL
 ```
+
 3. Run the app
+
 ```
 npx expo start
 ```
@@ -168,7 +172,8 @@ GET /questions/random
 Returns a random question
 
 
-##Sola Lhim
+
+<h2>Sola Lhim</h2>
 
 Full-stack development (mobile + backend)
 
