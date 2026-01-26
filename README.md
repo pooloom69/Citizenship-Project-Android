@@ -12,7 +12,7 @@ This is the combined top-level README for the entire project.
 
 <h2>Demo</h2>
 ☆☆☆OpenTesting stage☆☆☆
-Searcch "" Citizenship Buddy "" at Google Play Store
+Searcch "" Citizenship Interview Prep "" at Google Play Store
 
 <h2>Features</h2>
 Mobile App (citizenship-coach)
