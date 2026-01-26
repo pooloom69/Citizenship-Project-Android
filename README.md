@@ -13,6 +13,7 @@ This is the combined top-level README for the entire project.
 <h2>Demo</h2>
 ☆☆☆OpenTesting stage☆☆☆
 Searcch "" Citizenship Interview Prep "" at Google Play Store
+https://play.google.com/store/apps/details?id=com.yourname.citizenshipcoach&pcampaignid=web_share
 
 <h2>Features</h2>
 Mobile App (citizenship-coach)
