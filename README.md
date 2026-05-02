@@ -1,191 +1,92 @@
-<h1>🇺🇸 Citizenship Coach</h1>
- 
-Citizenship Coach is an AI-powered mobile application designed to help users practice for the U.S. Naturalization Civics Test.
-The project consists of two main components:
+# 🇺🇸 Citizenship Coach: AI-Powered Interview Prep
 
-📱 citizenship-coach — React Native (Expo) mobile application
+**Citizenship Coach** is an AI-driven mobile platform designed to help users master the U.S. Naturalization Civics Test. Beyond simple flashcards, it leverages **OpenAI Whisper (STT)** and **GPT-4o-mini** to provide an interactive experience where users can practice speaking and receive semantic feedback on their answers.
 
-🌐 citizenship-backend — FastAPI server powered by OpenAI Whisper + GPT models
+---
 
-This is the combined top-level README for the entire project.
+## 📱 Store Links & Demo
+The application is available for testing and use on both major platforms:
 
+* **Google Play Store:** https://play.google.com/store/apps/details?id=com.yourname.citizenshipcoach
+* **Apple App Store:** https://apps.apple.com/us/app/us-citizenship-interview-prep/id6759361143
 
-<h2>Demo</h2>
-☆☆☆OpenTesting stage☆☆☆
-Searcch "" Citizenship Interview Prep "" at Google Play Store
-https://play.google.com/store/apps/details?id=com.yourname.citizenshipcoach&pcampaignid=web_share
+---
 
-<h2>Features</h2>
-Mobile App (citizenship-coach)
+## ✨ Key Features
 
-Complete 2008 & 2025 USCIS Civics Test question sets
+### 1. Mobile Application (React Native / Expo)
+* **Comprehensive Question Bank:** Includes full 2008 & 2025 USCIS Civics Test sets.
+* **Intelligent Learning Modes:**
+    * **Practice Mode:** Instant AI feedback on speech and accuracy.
+    * **Mock Test Mode:** Simulates the actual interview environment.
+    * **Review Mode:** Focused study on bookmarks and frequently missed questions.
+* **Voice-First Interface:** Hands-free practice using high-quality voice recording and transcription.
+* **Integrated TTS:** Native English Text-to-Speech for all questions to improve listening comprehension.
 
-Practice Mode, Test Mode, Question Bank, and Review Mode
+### 2. Backend Services (FastAPI + AI)
+* **Semantic Evaluation Engine:** Unlike keyword matching, our AI evaluates the *meaning* of an answer, allowing for natural variations, paraphrasing, and minor grammatical or pronunciation slips.
+* **Advanced Audio Pipeline:** * **Whisper STT:** High-accuracy transcription of user voice recordings.
+    * **OpenAI TTS:** Natural voice synthesis for an immersive interview experience.
+* **Multilingual Data Support:** Serves dynamic English and Korean question sets via a robust REST API.
 
-Voice Recording → Whisper STT transcription
+---
 
-AI-powered answer evaluation (semantic comparison, flexible with grammar/pronunciation errors)
+## 🏗️ System Architecture
 
-Text-to-Speech (TTS) for reading questions aloud
-
-Bookmarking questions & tracking wrong answers
-
-Clean, intuitive UI built with Expo + React Native
-
-
-Backend API (citizenship-backend)
-
-Provides all AI processing and data services required by the app:
-
-🗣️ Speech-to-Text (STT)
-
-Converts user audio (M4A/WAV) to text using Whisper
-
-Endpoint: /stt
-
-🔊 Text-to-Speech (TTS)
-
-Converts question text to natural English audio (MP3)
-
-Endpoint: /tts
-
-🧠 AI Answer Evaluation
-
-Compares user answers with official answers using GPT-4o-mini
-
-Allows flexible interpretation of partial, paraphrased, or imperfect answers
-
-Endpoint: /evaluate
-
-📚 Question Data
-
-Provides English/Korean question bank (questions_all.json)
-
-Random question generation
-
-Endpoints: /questions, /questions/random
-
-
-<h2>Project Structure</h2>
-
-```
+```text
 CITIZENSHIP-PROJECT/
-│
-├── citizenship-coach/        # Frontend (React Native / Expo)
+├── citizenship-coach/         # Frontend: React Native (Expo)
 │   ├── app/
-│   │   ├── api/              # STT, TTS, evaluate, questions
-│   │   ├── components/       # Reusable UI components
-│   │   ├── config/           # Colors / theme config
-│   │   ├── screens/          # Home, Practice, Test, Result, Review screens
-│   │   ├── utils/            # Audio utilities, bookmarks, wrong answer store
-│   │   └── assets/           # Images, icons, splash graphics
-│   ├── app.json
-│   ├── eas.json              # Expo EAS build config
-│   ├── package.json
-│   └── README.md
-│
-├── citizenship-backend/      # Backend (FastAPI)
-│   ├── app/
-│   │   ├── data/             # Question set JSON files
-│   │   ├── models/           # Pydantic schemas
-│   │   ├── routers/          # API route definitions
-│   │   ├── services/         # Whisper, TTS, Evaluate service logic
-│   │   ├── config.py
-│   │   └── main.py
-│   ├── requirements.txt
-│   ├── Dockerfile
-│   ├── Procfile
-│   └── README.md
-│
-└── README.md                 # Top-level combined README
-```
+│   │   ├── api/               # API clients (Axios, Client-side logic)
+│   │   ├── screens/           # Dashboard, Practice, Test, Result, Review
+│   │   └── utils/             # Audio utilities, Async storage for tracking
+│   └── app.json               # iOS/Android Build & EAS Config
+└── citizenship-backend/       # Backend: FastAPI (Python)
+    ├── app/
+    │   ├── routers/           # /stt, /tts, /evaluate, /questions
+    │   ├── services/          # OpenAI API wrappers & logic
+    │   └── data/              # Multilingual JSON question banks
+    └── Dockerfile             # Containerization for deployment
 
-<h2>🚀 Getting Started</h2>
+---
 
-1) Backend Setup (FastAPI)
-1. Create virtual environment
-```
+## 🛠 Tech Stack
+
+### **Frontend**
+* **Framework:** `React Native` (Expo)
+* **UI/UX:** Custom design with native components for accessibility.
+* **Audio:** `Expo-Audio` for seamless recording.
+* **Build Tool:** `EAS` (Expo Application Services).
+
+### **Backend**
+* **Framework:** `FastAPI` (Asynchronous Python).
+* **AI Integration:** `OpenAI Whisper-1` (STT), `GPT-4o-mini` (Evaluation).
+* **Deployment:** `Docker`, Cloud Hosting (Heroku/AWS).
+
+---
+
+## 🚀 Getting Started
+
+### 1. Backend Setup (FastAPI)
+First, navigate to the backend directory and set up your environment:
+```bash
 cd citizenship-backend
 python -m venv venv
-source venv/bin/activate  # Mac/Linux
-# venv\Scripts\activate   # Windows
-```
-2. Install dependencies
-```
+source venv/bin/activate
 pip install -r requirements.txt
-```
-4. Environment variables
-
-Create a .env file:
-```
-OPENAI_API_KEY=sk-your-api-key
-```
-4. Run server
-```
+# Set your OPENAI_API_KEY in a .env file
 uvicorn app.main:app --reload
-```
-
-Local API docs:
-👉 http://127.0.0.1:8000/docs
-
-2) Frontend Setup (React Native / Expo)
-1. Install dependencies
-```
-cd citizenship-coach
-npm install
-```
-3. Configure backend API URL
-
-Inside app/api/client.js:
-
-```
-export const API_URL = "http://127.0.0.1:8000";  // or deployed backend URL
-```
-
-3. Run the app
-
-```
-npx expo start
-```
-
-Open the Android emulator or scan the QR code with the Expo Go app.
 
 
-🔗 API Endpoints Summary
-POST /stt
+---
 
-Input: audio file
-Output: transcribed text
+## 👨‍💻 Developer: Sola Lhim
+**Full-stack Software Engineer & AI Researcher**
 
-POST /tts
+* **End-to-End AI Architecture:** Designed and implemented the complete audio processing pipeline—integrating mobile recording, asynchronous STT (Whisper), and LLM-based semantic evaluation (GPT-4o-mini).
+* **User-Centered UI/UX:** Developed a high-fidelity mobile interface using React Native, specifically optimized for high-stakes testing environments with focus on accessibility and data visualization.
+* **Scalable Backend Engineering:** Engineered a robust FastAPI server to handle concurrent AI processing requests, dynamic question serving, and secure API integration.
+* **Full Lifecycle Management:** Successfully managed the entire deployment cycle, from initial beta testing to public release on both the **Google Play Store** and **Apple App Store**.
 
-Input: question text
-Output: MP3 audio
-
-POST /evaluate
-
-Input: user_answer + correct_answer
-Output: evaluation result JSON
-
-GET /questions
-
-Returns full question set
-
-GET /questions/random
-
-Returns a random question
-
-
-
-<h2>Sola Lhim</h2>
-
-Full-stack development (mobile + backend)
-
-UI/UX design for all screens
-
-Audio pipeline (record → STT → evaluation)
-
-FastAPI AI services integration
-
-Deployment & testing
+---
 
